@@ -27,5 +27,19 @@ export function setupConverter(){
     selectedIndex.selectFrom('meter');
     selectedIndex.selectTo('kilometer');
 
+    function converter(){
+        const inputValue = parseFloat(input.value);
 
-}
+        if(isNaN(value)){
+            result.textContent = "Please enter a valid number";
+            return;
+        };
+
+        const selectFromBase = selectFrom.value;
+        const selectToBase = selectTo.value;
+        const convertedData = ( value * selectFromBase / selectToBase);
+
+        result.textContent = '${value} ${lengthUnit[selectFrom.selectedIndex].name} = ${convertedData.toFixed(3)} ${lengthUnit[selectTo.selectedIndex].name}';
+    };
+
+};
